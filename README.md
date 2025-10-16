@@ -10,7 +10,6 @@ You can view the live site here: [https://htvan-code.github.io/My-portfolio/](ht
 
 * HTML5
 * CSS3 (Utilizing Flexbox and Grid for layout)
-* JavaScript (if applicable)
 
 ## ✨ Key Features
 
