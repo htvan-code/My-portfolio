@@ -1,0 +1,703 @@
+/* --- THIẾT LẬP CHUNG --- */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* TỰ ĐIỀN: Font chữ chính của bạn */
+}
+
+/* --- LAYOUT CHÍNH 2 CỘT --- */
+.main-container {
+    display: grid;
+    grid-template-columns: 120px 1fr; /* TỰ ĐIỀN: Chiều rộng cột trái */
+}
+
+/* --- CỘT BÊN TRÁI (SIDEBAR) --- */
+.left-sidebar {
+    background-color: white;
+    border-right: 4px solid #111111;
+    min-height: 100vh;
+    
+    /* Căn chỉnh logo vào đúng vị trí */
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    padding-top: 40px; /* TỰ ĐIỀN: Khoảng cách từ mép trên xuống logo */
+}
+
+/* --- CỘT BÊN PHẢI (NỘI DUNG) --- */
+.main-content {
+    background-color: #FBFBFB;
+    background-image: radial-gradient(circle, #E0E0E0 1px, transparent 1px);
+    background-size: 10px 10px;
+    padding: 0 20px; /* TỰ ĐIỀN: Khoảng đệm ngang cho nội dung */
+}
+
+/* --- LOGO (Nằm trong sidebar) --- */
+.header__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 16px; /* Khoảng cách giữa ngôi sao và chữ vanilala */
+
+    /* TỰ ĐIỀN: Đây là khoảng cách bạn muốn giữa logo và "Portfolio" */
+    margin-right: 100px; 
+}
+
+.header__logo img {
+    width: 32px; /* TỰ ĐIỀN: Kích thước của ngôi sao */
+}
+
+.header__logo span {
+    font-family: 'Handlee', cursive; /* TỰ ĐIỀN: Font chữ cho "vanilala" */
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+}
+
+
+/* --- HEADER (Chỉ chứa menu, nằm trong cột phải) --- */
+.header {
+    display: flex;
+    align-items: center; /* Căn các mục thẳng hàng theo chiều dọc */
+    justify-content: flex-end; /* Đẩy toàn bộ cụm về phía bên phải */
+
+    /* TỰ ĐIỀN: Khoảng đệm trên/dưới của header */
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+/* --- MENU ĐIỀU HƯỚNG --- */
+.header__nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px; /* TỰ ĐIỀN: Khoảng cách giữa "Portfolio" và "Hire Me" */
+}
+
+.header__nav a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.nav__link--highlighted {
+    position: relative; /* Bắt buộc để định vị highlight */
+    z-index: 1;         /* Đảm bảo chữ luôn ở lớp trên cùng */
+}
+
+.nav__link--highlighted::after {
+    content: '';
+    position: absolute;
+    
+    /* --- TỰ ĐIỀN: Các thông số cho highlight --- */
+    
+    /* 1. Kích thước & Màu sắc */
+    width: 90%; /* Highlight rộng bằng chữ */
+    height: 30%; /* TỰ ĐIỀN: Độ cao của dải highlight so với chiều cao chữ (ví dụ: 60%) */
+    background-color: #FFB3E1; /* Mã màu hồng */
+
+    /* 2. Vị trí (Phép thuật căn giữa và đẩy ra sau) */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%); /* Căn dải highlight ra chính giữa chữ */
+    z-index: -1; /* QUAN TRỌNG: Đẩy dải highlight ra lớp đằng sau chữ */
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex; /* Dàn 2 cột trái/phải trên một hàng */
+    align-items: center; /* Căn giữa 2 cột theo chiều dọc */
+
+    /* TỰ ĐIỀN: Khoảng cách ngang giữa 2 cột (ví dụ: 60px) */
+    gap: 250px;
+
+    /* TỰ ĐIỀN: Khoảng đệm trên/dưới cho toàn bộ section (ví dụ: 80px) */
+    padding-top: 20px;
+    padding-bottom: 80px;
+}
+
+/* --- CỘT BÊN TRÁI --- */
+
+
+/* Nhóm avatar - Dùng để định vị các ảnh con */
+.hero__avatar-group {
+    position: relative; /* Rất quan trọng! */
+    height: 150px; /* TỰ ĐIỀN: Chiều cao tương đối của nhóm avatar để tạo không gian */
+    margin-bottom: 0px; /* TỰ ĐIỀN: Khoảng cách từ nhóm avatar xuống chữ "Frontend" */
+}
+
+/* Các ảnh PNG trong nhóm avatar */
+.hero__avatar-img,
+.hero__arrow,
+.hero__tag {
+    position: absolute; /* Cho phép các ảnh chồng lên nhau */
+}
+
+.hero__avatar-img {
+    /* TỰ ĐIỀN: Kích thước của ảnh cô gái */
+    width: 120px;
+    top: 0;
+    left: 0;
+}
+
+.hero__arrow {
+    /* TỰ ĐIỀN: Kích thước và vị trí của mũi tên so với góc trên-trái */
+    width: 80px;
+    top: 30px;
+    left: 150px; 
+}
+
+.hero__tag {
+    /* TỰ ĐIỀN: Kích thước và vị trí của tag "vanilala" */
+    width: 100px;
+    top: 0px;
+    left: 250px;
+}
+
+/* Tiêu đề chính "Frontend Developer" */
+.hero__left h1 {
+    margin: 0; /* Xóa khoảng trắng mặc định */
+
+    /* TỰ ĐIỀN: Các thông số cho tiêu đề */
+    font-size: 80px;
+    font-weight: 600; /* 700 là Bold */
+    line-height: 1.1; /* Độ giãn dòng */
+}
+.highlight-pink {
+    position: relative; /* Bắt buộc để định vị highlight */
+    z-index: 1;         /* Đảm bảo chữ luôn ở lớp trên cùng */
+}
+.highlight-pink::after{
+    content: '';
+    position: absolute;
+    
+    /* --- TỰ ĐIỀN: Các thông số cho highlight --- */
+    
+    /* 1. Kích thước & Màu sắc */
+    width: 90%; /* Highlight rộng bằng chữ */
+    height: 30%; /* TỰ ĐIỀN: Độ cao của dải highlight so với chiều cao chữ (ví dụ: 60%) */
+    background-color: #FFB3E1; /* Mã màu hồng */
+
+    /* 2. Vị trí (Phép thuật căn giữa và đẩy ra sau) */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%); /* Căn dải highlight ra chính giữa chữ */
+    z-index: -1; /* QUAN TRỌNG: Đẩy dải highlight ra lớp đằng sau chữ */
+
+}
+
+
+/* --- CỘT BÊN PHẢI --- */
+.hero__right p {
+    /* TỰ ĐIỀN: Các thông số cho đoạn văn mô tả */
+    font-size: 26px;
+    font-weight: 400; /* 400 là Regular */
+    line-height: 1.6;
+    margin-top: 0; /* Xóa khoảng trắng mặc định phía trên */
+
+    /* QUAN TRỌNG: Giới hạn chiều rộng của đoạn văn để nó tự xuống dòng */
+    max-width: 540px; 
+    padding-top: 150px; 
+    /* TỰ ĐIỀN: Khoảng cách từ đoạn văn xuống nút "Hire me" */
+    margin-bottom: 30px;
+}
+
+.hero__right a img {
+    /* TỰ ĐIỀN: Chiều rộng của nút "Hire me" PNG */
+    width: 250px;
+}
+
+/* --- SKILLS SECTION (What I do?) --- */
+.skills {
+    /* TỰ ĐIỀN: Khoảng đệm trên/dưới cho toàn bộ section */
+    padding-top: 0px;
+    padding-bottom: 100px;
+}
+
+.section-title {
+    display: flex;
+    flex-direction: column; /* QUAN TRỌNG: Xếp các mục theo chiều dọc */
+    align-items: flex-start; /* Căn các mục về phía bên trái */
+
+    /* TỰ ĐIỀN: Khoảng cách DỌC giữa tag và mũi tên */
+    gap: 10px; 
+    
+    /* TỰ ĐIỀN: Khoảng cách từ cụm tiêu đề xuống các sticky note */
+    margin-bottom: 40px; 
+}
+
+
+.section-title__arrow {
+    /* TỰ ĐIỀN: Chiều rộng của mũi tên cong */
+    width: 50px; 
+}
+/* Lưới chứa các sticky note */
+.skills__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px; 
+}
+
+/* 🎨 Style cho cái "HỘP" màu (div) */
+.skill-card {
+
+    border-radius: 10px; /* Bo góc */
+    position: relative; /* Cực kỳ quan trọng: Làm "mỏ neo" cho các ảnh con */
+    height: 350px;
+    width: 70%;
+    right: 40px;
+    /* TỰ ĐIỀN: Khoảng đệm bên trong mỗi sticky note */
+    padding: 58px;
+}
+
+/* Màu nền và góc xoay cho từng "HỘP" */
+.skill-card--yellow {
+    background-color: #FFEC8A; /* Mã màu vàng */
+    border: 5px solid #EECD56; /* Viền vàng */
+    transform: rotate(-7deg);
+}
+.skill-card--blue {
+    background-color: #9DDCFF; /* Mã màu xanh */
+    border: 5px solid #5AB5E8;
+    transform: rotate(4deg);
+}
+.skill-card--pink {
+    background-color: #FFB3E1; /* Mã màu hồng */
+    border: 5px solid #FC75FF;
+    transform: rotate(-4deg);
+}
+
+/* ✏️ Style cho icon PNG (bút chì, con mắt) */
+.skill-card__icon {
+    /* Đây không phải là thẻ `position: absolute` vì nó nằm trong luồng nội dung bình thường */
+    width: 80px; /* TỰ ĐIỀN: Chiều rộng của icon */
+}
+
+/* Chữ "Web Development" */
+.skill-card h3 {
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 60px; /* Khoảng cách từ icon xuống chữ */
+}
+
+/* 🏷️ Style cho tag PNG (html,css,js...) */
+.skill-card__tag1 {
+    position: absolute; /* Cho phép tag "trôi nổi" trên cái hộp */
+
+    /* TỰ ĐIỀN: Vị trí của tag so với góc trên-phải của cái hộp */
+    top: 20px;
+    right: -30px;
+
+    /* TỰ ĐIỀN: Chiều rộng của tag PNG */
+    width: 200px; 
+}
+
+.skill-card__tag2 {
+    position: absolute; /* Cho phép tag "trôi nổi" trên cái hộp */
+
+    /* TỰ ĐIỀN: Vị trí của tag so với góc trên-phải của cái hộp */
+    top: -30px;
+    right: 20px;
+
+    /* TỰ ĐIỀN: Chiều rộng của tag PNG */
+    width: 140px; 
+}
+
+.skill-card__tag3 {
+    position: absolute; /* Cho phép tag "trôi nổi" trên cái hộp */
+
+    /* TỰ ĐIỀN: Vị trí của tag so với góc trên-phải của cái hộp */
+    top: 20px;
+    right: -40px;
+
+    /* TỰ ĐIỀN: Chiều rộng của tag PNG */
+    width: 200px; 
+}
+
+/* --- PROJECTS SECTION --- */
+.projects {
+    /* TỰ ĐIỀN: Khoảng đệm trên/dưới cho toàn bộ section */
+    padding: 100px 0;
+
+    /* 👇 Bật Flexbox để tạo layout 2 cột 👇 */
+    display: flex;
+    align-items: flex-start; /* Căn đỉnh của 2 cột thẳng hàng */
+    
+    /* TỰ ĐIỀN: Khoảng cách ngang giữa 2 cột */
+    gap: 60px; 
+}
+
+/* Cột bên trái (tiêu đề và mô tả) */
+.projects__sidebar {
+    /* TỰ ĐIỀN: Đặt chiều rộng cố định cho cột trái để nó không quá lớn */
+    flex-basis: 200px;
+    flex-shrink: 0; /* Ngăn cột này bị co lại */
+}
+
+.projects__description {
+    /* TỰ ĐIỀN: Các thông số cho chữ "I have some little project" */
+    position: relative;
+    left: 20px;
+    font-size: 16px;
+    color: #0c0c0c;
+    margin-top: 5px;
+}
+.section-title__arrow {
+    /* TỰ ĐIỀN: Chiều rộng của mũi tên cong */
+    position: relative;
+    left: 50px;
+    width: 50px; 
+}
+
+/* Lưới project bên phải */
+.projects__grid {
+    flex: 1; /* Cho phép container chiếm không gian */
+    
+    /* 👇 THAY ĐỔI TỪ GRID SANG FLEXBOX 👇 */
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các box tự xuống hàng khi hết chỗ */
+    /* TỰ ĐIỀN: Bây giờ gap sẽ hoạt động chính xác */
+    gap: 20px; 
+}
+
+.project-card {
+    position: relative;
+    border: 4px solid #111111;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden; /* Giữ nguyên, rất quan trọng */
+    display: flex; /* Bật flexbox để dễ căn chỉnh nội dung */
+    flex-direction: column; /* Xếp ảnh và info theo chiều dọc */
+
+    /* 👇 TỰ ĐIỀN: Thêm kích thước cố định cho box 👇 */
+    width: 400px; 
+    height: 450px;
+
+    padding: 10px;
+    box-sizing: border-box;
+}
+.project-card__overlay-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Dòng z-index đảm bảo link nằm trên các thành phần khác để có thể bấm vào */
+    z-index: 1; 
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Hơi nhấc box lên */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+    transition: all 0.2s ease-in-out; /* Làm hiệu ứng mượt hơn */
+}
+
+.project-card__image {
+    width: 100%; /* Chiếm hết chiều ngang của box */
+    height: 400px; /* TỰ ĐIỀN: Chiều cao cố định cho vùng ảnh */
+    display: block;
+    border-bottom: 2px solid #111111;
+
+    /* 👇 QUAN TRỌNG: Giữ cho ảnh không bị méo 👇 */
+    object-fit: cover; 
+}
+
+.project-card__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.project-card__title {
+    margin: 0;
+    font-family: 'Handlee', cursive;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Con trỏ (1 ảnh duy nhất) */
+.project-card__pointer img {
+    height: 70px; /* TỰ ĐIỀN: Chiều cao của ảnh con trỏ */
+    display: block;
+}
+
+/* --- EDUCATION SECTION --- */
+.education {
+    display: flex;
+    align-items: center; /* Căn giữa cột trái và lưới theo chiều dọc */
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.education__sidebar {
+    flex-basis: 250px;
+    flex-shrink: 0;
+}
+/* ... (code cho description, section-title giữ nguyên) ... */
+
+.education__description {
+    /* TỰ ĐIỀN: Các thông số cho chữ "My Certificates" */
+    position: relative;
+    text-align: center;
+    left: 20px;
+    font-size: 18px;
+    color: #0c0c0c;
+    margin-top: 5px;
+}
+
+/* Cột bên phải (Container cho lưới) */
+.education__grid-container {
+    display: grid;
+    
+    /* TỰ ĐIỀN: Kích thước của các ô viền và ô nội dung */
+    grid-template-columns: 70px auto 70px; /* Cột 1 và 3 rộng 40px, cột giữa tự co giãn */
+    grid-template-rows: 70px auto 70px; /* Hàng 1 và 3 cao 40px, hàng giữa tự co giãn */
+
+    /* TỰ ĐIỀN: Kích thước cố định của toàn bộ lưới */
+    width: 800px; 
+    height: 600px; /* Bạn có thể set chiều cao cố định nếu muốn */
+}
+
+/* Style chung cho mỗi ô trong lưới */
+.grid-cell {
+    /* Căn giữa nội dung trong ô (nếu có) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Dành cho các trường hợp nâng cao */
+}
+
+/* --- CÁC CLASS TIỆN ÍCH ĐỂ BẠN TỰ VẼ VIỀN --- */
+.border-top    { border-top: 2px solid #111111; }
+.border-right  { border-right: 2px solid #111111; }
+.border-bottom { border-bottom: 2px solid #111111; }
+.border-left   { border-left: 2px solid #111111; }
+
+/* Nội dung thật (Danh sách chứng chỉ) */
+.certificate-list {
+    /* 👇 Đặt danh sách này vào ô trung tâm (2,2) 👇 */
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+
+    /* Vẽ các đường kẻ bên trong để tạo thành lưới */
+    
+    /* TỰ ĐIỀN: Khoảng đệm cho nội dung bên trong */
+    padding: 40px;
+
+    /* Style cho các item bên trong */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    
+}
+
+/* ... (toàn bộ code cho .certificate-item và các phần tử con giữ nguyên) ... */
+.certificate-item a {
+    text-decoration: none; /* Xóa gạch chân */
+    color: inherit; /* Giữ lại màu chữ gốc (không chuyển thành màu xanh) */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%; /* Chiếm hết chiều rộng */
+    height: 100%;
+}
+.certificate-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.certificate-item__number {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #111111;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Handlee', cursive;
+    font-size: 40px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Màu nền cho các box số */
+.certificate-item__number--yellow { background-color: #FFE68C;    border: 3px solid #EECD56; }
+.certificate-item__number--blue { background-color: #9DDCFF;border: 3px solid #5AB5E8; }
+.certificate-item__number--pink { background-color: #FFC9F0;border: 3px solid #F384D4; }
+
+/* Phần chữ bên phải số */
+.certificate-item__details {
+    max-width: 500px;
+}
+
+.certificate-item__title {
+    margin: 0;
+    font-size: 22px; /* TỰ ĐIỀN: Cỡ chữ tiêu đề */
+    font-weight: 400;
+}
+
+.certificate-item__source,
+.certificate-item__date {
+    margin: 2px 0 0 0;
+    font-size: 14px; /* TỰ ĐIỀN: Cỡ chữ phụ */
+    color: #555;
+}
+
+/* --- CONTACT SECTION --- */
+.contact {
+    /* 👇 Bật Flexbox để tạo layout 2 cột 👇 */
+    display: flex;
+    align-items: flex-start; /* Căn đỉnh của 2 cột thẳng hàng */
+    gap: 150px; /* TỰ ĐIỀN: Khoảng cách giữa 2 cột */
+    padding: 100px 0;
+}
+.section-title__arrow {
+    /* TỰ ĐIỀN: Chiều rộng của mũi tên cong */
+    position: relative;
+    left: 100px;
+    width: 50px; 
+}
+/* Cột bên trái */
+.contact__sidebar {
+    flex-basis: 250px;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.contact__description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    /* text-align: center; */ /* Bỏ ghi chú dòng này nếu bạn muốn căn giữa chữ */
+    position: relative;
+    left: 150px;
+}
+.contact__description strong {
+    font-weight: 700;
+}
+
+
+/* Cột bên phải (Form) */
+.contact__form-container {
+    flex: 1; /* Chiếm hết không gian còn lại */
+}
+
+.contact__form-container form {
+    /* Sắp xếp các ảnh và nút theo chiều dọc */
+    display: flex;
+    flex-direction: column;
+    
+    /* TỰ ĐIỀN: Khoảng cách dọc giữa các ảnh */
+    gap: 30px; 
+    max-width: 600px;
+}
+
+/* Style cho các ảnh trường nhập liệu */
+.contact-field-img {
+    width: 100%;
+    max-width: 600px; /* Giới hạn chiều rộng tối đa */
+}
+
+.contact__submit-wrapper {
+    display: flex;
+    justify-content: flex-end; /* Đẩy nội dung (nút) về phía bên phải */
+    width: 100%;
+    max-width: 600px; /* Phải giống với max-width của các ảnh trên */
+}
+
+/* 👇 Nút Submit - Sửa lỗi viền và vị trí 👇 */
+.contact__submit-btn {
+    /* 1. Xóa style mặc định của nút để hết viền */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.contact__submit-btn img {
+    /* TỰ ĐIỀN: Chiều rộng của ảnh nút "Send Here" */
+    width: 220px;
+    display: block;
+}
+
+/* --- FOOTER SECTION --- */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    
+    /* 👇 TẠO KHUNG THAM CHIẾU CHO ĐƯỜNG KẺ ẢO 👇 */
+    position: relative;
+}
+
+.footer::before {
+    content: ''; /* Bắt buộc phải có */
+    position: absolute;
+    top: 0;
+    
+    /* Giả sử padding của .main-content là 80px */
+    left: -300px;  /* Đi ngược ra ngoài padding trái */
+    right: -80px; /* Đi ngược ra ngoài padding phải */
+    
+    height: 4px; /* Độ dày của đường kẻ */
+    background-color: #111111;
+}
+
+/* Cột logo bên trái */
+.footer__logo a {
+    display: flex; /* Xếp ngôi sao và chữ cạnh nhau */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 8px; /* TỰ ĐIỀN: Khoảng cách giữa ngôi sao và chữ */
+    text-decoration: none;
+    color: #111111;
+    font-weight: 700;
+    font-size: 24px; /* TỰ ĐIỀN: Cỡ chữ "vanilala" */
+    font-family: 'Handlee', cursive; /* TỰ ĐIỀN: Font chữ cho "vanilala" */
+}
+
+.footer__logo img {
+    /* TỰ ĐIỀN: Kích thước của ngôi sao */
+    height: 32px; 
+}
+
+
+/* Cột mạng xã hội bên phải */
+.footer__socials {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn mọi thứ về phía bên phải */
+}
+
+/* Danh sách các link */
+.social-links {
+    margin-right: 40px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 100px; /* TỰ ĐIỀN: Khoảng cách giữa các link */
+}
+
+/* Style cho mỗi link để trông giống cái tag */
+.social-links a {
+    display: block;
+    background-color: #111111;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: 'Handlee', cursive;
+    font-weight: 500;
+    padding: 0.5px 8px; /* TỰ ĐIỀN: Độ lớn của tag */
+}
+
+/* Chữ "My social media" */
+.social-caption {
+    margin: 0;
+    margin-top: 8px; /* TỰ ĐIỀN: Khoảng cách từ link xuống chữ */
+    font-size: 20px;
+    color: #555;
+}
