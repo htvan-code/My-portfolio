@@ -701,3 +701,104 @@ body {
     font-size: 20px;
     color: #555;
 }
+
+
+
+@media (max-width: 768px) {
+
+    /* --- LAYOUT CHÍNH --- */
+    .main-container {
+        /* Chuyển từ 2 cột grid thành 1 cột duy nhất */
+        display: block; 
+    }
+
+    /* --- SIDEBAR --- */
+    .left-sidebar {
+        /* Ẩn sidebar trống trên mobile */
+        display: none;
+    }
+
+    /* --- HEADER --- */
+    .header {
+        /* Dàn logo và menu ra 2 bên */
+        justify-content: space-between;
+        
+        /* Thêm viền dưới và bỏ padding ngang thừa */
+        border-bottom: 4px solid #111111;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .header__logo {
+        /* Bỏ khoảng cách không cần thiết */
+        margin-right: 0;
+    }
+    .header__logo span {
+        /* Có thể ẩn chữ trên mobile cho gọn */
+        display: none;
+    }
+
+
+    /* --- NỘI DUNG CHÍNH --- */
+    .main-content {
+        /* Bỏ padding ngang vì header đã có */
+        padding: 0;
+    }
+
+
+    /* --- HERO SECTION --- */
+    .hero {
+        /* Chuyển từ 2 cột ngang thành 1 cột dọc */
+        flex-direction: column;
+        gap: 40px; /* Giảm khoảng cách */
+        text-align: flex-start; /* Căn giữa chữ */
+        
+        /* Thêm padding cho section trên mobile */
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 40px;
+    }
+    
+    .hero__avatar-group {
+        /* Sắp xếp lại nhóm avatar để dễ nhìn hơn */
+        position: relative; 
+        width: 100%; /* Cho phép nó giãn ra */
+        height: 120px; /* Đặt chiều cao nhất định */
+        margin-bottom: 20px;
+        
+        /* Dùng flexbox để căn giữa và sắp xếp các ảnh con theo hàng ngang */
+        display: flex;
+        justify-content: flex-start; /* Căn giữa theo chiều ngang */
+        align-items: flex-end; /* Căn dưới theo chiều dọc */
+        gap: 15px; /* Khoảng cách giữa các ảnh con */
+    }
+
+    .hero__avatar-img,
+    .hero__arrow,
+    .hero__tag {
+        position: static; /* Bỏ định vị tuyệt đối */
+    }
+
+    /* Giảm cỡ chữ cho dễ đọc trên mobile */
+    .hero__left h1 {
+        font-size: 48px; 
+    }
+
+    .hero__right {
+        /* Căn giữa các item bên trong (p, a) */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero__right p {
+        font-size: 16px;
+        padding-top: 0; /* Bỏ padding thừa */
+        max-width: 100%; /* Cho phép chữ chiếm hết chiều rộng */
+        margin-bottom: 30px;
+    }
+
+    .hero__right a img {
+        width: 200px; /* Giảm kích thước nút Hire Me */
+    }
+}
